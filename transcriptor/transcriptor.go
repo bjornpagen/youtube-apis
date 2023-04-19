@@ -108,6 +108,10 @@ func (g *GetTranscriptResponse) String() string {
 		subtitles += t.Subtitle + " "
 	}
 
+	if len(subtitles) == 0 {
+		return ""
+	}
+
 	return subtitles[:len(subtitles)-1]
 }
 
