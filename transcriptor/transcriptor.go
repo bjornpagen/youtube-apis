@@ -100,6 +100,17 @@ type GetTranscriptResponse struct {
 	Transcription   []Transcription `json:"transcription"`
 }
 
+// GetTranscriptResponse.String()
+func (g *GetTranscriptResponse) String() string {
+	// just concatenate all subtitles
+	var subtitles string
+	for _, t := range g.Transcription {
+		subtitles += t.Subtitle + " "
+	}
+
+	return subtitles[:len(subtitles)-1]
+}
+
 type Thumbnail struct {
 	URL    string `json:"url"`
 	Width  int    `json:"width"`
