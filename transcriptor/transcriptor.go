@@ -166,11 +166,11 @@ func (c *Client) GetTranscript(videoID string, opts ...getTranscriptOption) (*Ge
 		return nil, fmt.Errorf("http status code is not ok: %s", string(body))
 	}
 
-	var transcript GetTranscriptResponse
+	transcript := make([]*GetTranscriptResponse, 1)
 	err = json.Unmarshal(body, &transcript)
 	if err != nil {
 		return nil, fmt.Errorf("failed to unmarshal response: %w", err)
 	}
 
-	return &transcript, nil
+	return transcript[0], nil
 }
