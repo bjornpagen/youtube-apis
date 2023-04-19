@@ -65,7 +65,7 @@ func New(apiKey string, opts ...Option) (*Client, error) {
 
 	if o.rateLimit == nil {
 		o.rateLimit = new(ratelimit.Limiter)
-		*o.rateLimit = ratelimit.New(3, ratelimit.Per(time.Second))
+		*o.rateLimit = ratelimit.New(2, ratelimit.Per(time.Second))
 	}
 
 	if o.httpClient == nil {
